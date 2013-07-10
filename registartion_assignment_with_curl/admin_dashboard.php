@@ -14,6 +14,7 @@ else{
         echo "<table><tr><td>$user[first_name]</td>";
         echo"<td><a href='edit_user.php?user_id=$user[user_id]' >Edit<a/></td>";
         echo"<td><a href='delete_user.php?user_id=$user[user_id]'>Delete<a/></td>";
+        echo"<td><a href='file_upload_form.php'>File Upload<a/></td>";
         echo"</tr></table>";
 
     }
