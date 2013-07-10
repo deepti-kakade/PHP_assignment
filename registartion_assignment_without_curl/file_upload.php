@@ -19,9 +19,15 @@ if(in_array($extension,$allowed_ext))
         }
         else
         {
-          move_uploaded_file($_FILES["file"]["tmp_name"],
+          $move = move_uploaded_file($_FILES["file"]["tmp_name"],
                 $file_path);
-            echo "Stored in: " . $file_path;
+            if($move){
+              echo "stored in:".$file_path;
+            }
+            else{
+            echo "Invalid file so can not move";
+            }
+
         }
     }
 }
