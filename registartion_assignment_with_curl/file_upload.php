@@ -1,6 +1,5 @@
 <?
 session_start();
-//print_r($_FILES);
 $temp = explode(".", $_FILES["file"]["name"]);
 $extension = end($temp);
 $allowed_ext = array("gif","jpg","jpeg","png");
@@ -31,7 +30,6 @@ if(in_array($extension,$allowed_ext))
             curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
             curl_setopt($ch, CURLOPT_VERBOSE, 1);
             $result = curl_exec($ch);
-            print_r($result);
             curl_close($ch);
         }
     }

@@ -21,20 +21,6 @@ if(in_array($extension,$allowed_ext))
             move_uploaded_file($_FILES["file"]["tmp_name"],
                 $file_path);
 
-            #echo "stored in:".$file_path;
-            try{
-                $image = new Imagick($file_path);
-                $thumb_of_image = $image -> thumbnailimage(100,0);
-                $image -> writeimage("upload/".$thumb_of_image);
-                $image ->destroy();
-
-                echo ("thumb nail created");
-            }catch(Exception $e){
-                echo $e -> getMessage();
-            }
-
-
-
         }
     }
 }
