@@ -9,7 +9,7 @@ if(!isset($_POST['submit'])){
 <head><title>Message</title></head>
 <body>
 <form method=post>
-    <h1>Create your own Message.................</h1>
+    <h1>Update Message.................</h1>
     Please fill Following Details<br>
     <table border="2">
         <tr>
@@ -25,20 +25,19 @@ if(!isset($_POST['submit'])){
             <td>Content of Message:</td><td><input name="msg_body" type="text" size"20"></input></td>
         </tr>
     </table>
-    <input name="submit" type="submit" value="Create Message"> </input>
+    <input name="submit" type="submit" value="Update Message"> </input>
 </form>
-<a href='edit_message.php'> Edit</a>
-<a href='delete_message.php'>Delete</a>
-<a href='show_message.php'>Show All Message</a>
 </body>
 </html>
 <?php
 }
 else{
+    $id = $_GET['id'];
+    echo $_GET['id'];
+
     $db = new DBUtils();
     $conn = $db->dbConnect();
-    $msg = new Message($_POST['author'],$_POST['subject'],$_POST['msg_date'],$_POST['msg_body']);
-    $db->addMessages($conn,$msg);
-    header('location:index.php');
+    $msg = new Message('$_POST[author]','$_[subject]','$_POST[msg_date]','$_POST[msg_body]');
+    $db->update($id,$conn,$msg);
 }
 ?>
