@@ -1,6 +1,7 @@
 <?php
-
 // url ----> local.framework.com/index.php?controller=User&action=createUser&name=deepti&email=deepti@weboniselab.com
+error_reporting(E_ALL);
+ini_set('display_errors', true);
 $controller_name = $_GET['controller'];
 
 if(file_exists('controller/'.$controller_name.'Controller.php'))
