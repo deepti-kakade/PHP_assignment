@@ -1,9 +1,8 @@
 <?
 session_start();
-//print_r($_FILES);
 $temp = explode(".", $_FILES["file"]["name"]);
 $extension = end($temp);
-$allowed_ext = array("gif","jpg","jpeg","png");
+$allowed_ext = array("gif","jpg","jpeg","png","JPG","PNG");
 if(in_array($extension,$allowed_ext))
 {
     if($_FILES["file"]["error"] > 0)
@@ -13,21 +12,21 @@ if(in_array($extension,$allowed_ext))
     else
     {
         $file_path = "upload/".$_FILES["file"]["name"];
+        echo $file_path;
         if (file_exists($file_path))
         {
             echo $_FILES["file"]["name"] . " already exists. ";
         }
         else
         {
-          $move = move_uploaded_file($_FILES["file"]["tmp_name"],
-                $file_path);
+            $move = move_uploaded_file($_FILES["file"]["tmp_name"],$file_path);
+            echo $move;
             if($move){
-              echo "stored in:".$file_path;
+                echo "stored in:".$file_path;
             }
             else{
-            echo "Invalid file so can not move";
+                echo "Can't move file";
             }
-
         }
     }
 }
