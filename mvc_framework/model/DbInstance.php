@@ -5,6 +5,8 @@ ini_set('display_errors', true);
 class DbInstance{
     public $con,$host_name,$username,$password;
     private static $db_instance = null;
+
+//---------------- create a database connection------------------------
     public function __construct(){
         $this->host_name = "localhost";
         $this->username = "root";
@@ -12,7 +14,7 @@ class DbInstance{
         $this->con= mysql_connect($this->host_name,$this->username,$this->password)or die(mysql_error());
         mysql_select_db("mvc",$this->con);
     }
-
+//----------------------- create a single instance of DbInstance class -------
     public static function singleton(){
         if(!self::$db_instance)
         {
@@ -22,6 +24,8 @@ class DbInstance{
         }
         return self::$db_instance;
     }
+
+// ----------------------  insert user data into database-----------------------
     public function insertUser($table_name,$data){
         $db = DbInstance::singleton();
         print_r($db);
