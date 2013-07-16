@@ -1,4 +1,5 @@
 <?php
+require_once 'model/DbInstance.php';
 class User extends DbInstance{
     public $name,$email;
 
@@ -7,7 +8,7 @@ class User extends DbInstance{
         $this->name = $name;
         $this->email->$email;
         $array = array('name' => $this->$name,'email'=> $this->email);
-        insertUserData($table_name,$array);
+        $this->insertUser($table_name,$array);
     }
 }
 ?>
