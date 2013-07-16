@@ -7,7 +7,6 @@ class UserController
     public function createUser($name,$email)
     {
         $user =new User($name,$email);
-        print_r($user);
     }
 }
 ?>

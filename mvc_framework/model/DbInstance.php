@@ -16,7 +16,7 @@ class DbInstance{
     }
 //----------------------- create a single instance of DbInstance class -------
     public static function singleton(){
-        if(!self::$db_instance)
+        if(!isset(self::$db_instance))
         {
             //$db_instance = __CLASS__;
             self::$db_instance = new self();
@@ -28,11 +28,13 @@ class DbInstance{
 // ----------------------  insert user data into database-----------------------
     public function insertUser($table_name,$data){
         $db = DbInstance::singleton();
-        print_r($db);
+        foreach ($data as $key=>&$val)
+        {
+            if(is_string($val))
+                $val="'".$val."'";
+        }
         $sql = "insert into ".$table_name."(".implode(",", array_keys($data)).") values(".implode(",", array_values($data)).")";
-        echo $sql."\n";
         $result = mysql_query($sql) or die(mysql_errno());
-        print_r($result);
         if($result)
         {
             print "User inserted successfully";
